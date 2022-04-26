@@ -1,32 +1,32 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: summit
-  namespace: summit
+  name: ld-demo
+  namespace: ld-demo
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ld-summit-frontend
-  namespace: summit
+  name: ld-k8s-frontend
+  namespace: ld-demo
   labels:
-    app: ld-summit-frontend
+    app: ld-k8s-frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ld-summit-frontend
+      app: ld-k8s-frontend
   template:
     metadata:
       annotations:
         "prometheus.io/scrape": "true"
         "prometheus.io/port": "5670"
       labels:
-        app: ld-summit-frontend
+        app: ld-k8s-frontend
     spec:
       containers:
-        - name: ld-summit-frontend
-          image: codydearkland/ld-summit-frontend:1
+        - name: ld-k8s-frontend
+          image: codydearkland/ld-k8s-frontend:1
           imagePullPolicy: Always
           ports:
             - name: web
@@ -36,8 +36,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ld-summit-frontend
-  namespace: summit
+  name: ld-k8s-frontend
+  namespace: ld-demo
 spec:
   ports:
     - name: http
@@ -45,12 +45,12 @@ spec:
       targetPort: 3000
       protocol: TCP
   selector:
-    app: ld-summit-frontend
+    app: ld-k8s-frontend
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: summit
+  namespace: ld-demo
   name: ld-lb
 spec:
   ports:
@@ -58,14 +58,14 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: ld-summit-frontend
+    app: ld-k8s-frontend
   type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api
-  namespace: summit
+  namespace: ld-demo
   labels:
     app: api
 spec:
@@ -83,7 +83,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: codydearkland/ld-summit-api:1
+          image: codydearkland/ld-k8s-api:1
           imagePullPolicy: Always
           ports:
             - containerPort: 5010
@@ -92,7 +92,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: api
-  namespace: summit
+  namespace: ld-demo
 spec:
   selector:
     app: api
@@ -105,7 +105,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db
-  namespace: summit
+  namespace: ld-demo
   labels:
     app: db
 spec:
@@ -132,7 +132,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: db
-  namespace: summit
+  namespace: ld-demo
 spec:
   selector:
     app: db

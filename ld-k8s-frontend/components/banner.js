@@ -66,7 +66,7 @@ export default function Banner(flags) {
           alt="launch-darkly"
         />
         <div className="mx-auto py-4 text-2xl md:text-4xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-ldyellow to-lddblue text-center italic">
-          Welcome to LaunchDarkly in Azure Kubernetes Servaice!
+          Welcome to LaunchDarkly in Azure Kubernetes Service!
         </div>
       </div>
     </div>
