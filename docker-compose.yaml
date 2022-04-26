@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+
+  ld-summit-frontend:
+    build:
+      context: ./ld-k8s-frontend
+      dockerfile: ./Dockerfile
+    image: codydearkland/ld-k8s-frontend:1
+    depends_on:
+      - api
+    ports:
+      - 3000:3000
+    networks:
+      - demo-network
+
+  api:
+    build:
+        context: ./ld-k8s-api
+        dockerfile: ./Dockerfile
+    image: codydearkland/ld-k8s-api:1
+    depends_on:
+     - db
+    ports:
+      - 5010:5010
+    networks:
+      - demo-network
+
+  db:
+    build:
+        context: ./db
+        dockerfile: ./Dockerfile
+    image: codydearkland/db:build
+    networks:
+      - demo-network
+
+
+networks:
+  demo-network:
+    driver: bridge
