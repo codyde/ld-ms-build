@@ -8,7 +8,7 @@ import QRCode from "../components/qrCode";
 import Banner from "../components/banner.js";
 
 export default function Home() {
-  const { userLogin, apiConfig, qrCode, brandImage } = useFlags();
+  const { newText, userLogin, apiConfig, brandImage } = useFlags();
   return (
     <div className="h-screen bg-ld-ls-wide bg-no-repeat bg-center bg-cover">
       <Head>
@@ -74,7 +74,7 @@ export default function Home() {
           {userLogin ? (
             <Loginbox userLogin={userLogin} />
           ) : (
-            <Banner userLogin={userLogin} />
+            <Banner />
           )}
         </div>
         {apiConfig ? (
