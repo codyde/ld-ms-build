@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
 
-  ld-summit-frontend:
+  frontend:
     build:
       context: ./ld-k8s-frontend
       dockerfile: ./Dockerfile
