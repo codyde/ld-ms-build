@@ -6,7 +6,7 @@ services:
     build:
       context: ./ld-k8s-frontend
       dockerfile: ./Dockerfile
-    image: codydearkland/ld-k8s-frontend:1
+    image: codydearkland/ld-k8s-frontend:kubecon1
     depends_on:
       - api
     ports:
@@ -18,7 +18,7 @@ services:
     build:
         context: ./ld-k8s-api
         dockerfile: ./Dockerfile
-    image: codydearkland/ld-k8s-api:1
+    image: codydearkland/ld-k8s-api:kubecon1
     depends_on:
      - db
     ports:
