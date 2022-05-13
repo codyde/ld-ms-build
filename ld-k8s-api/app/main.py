@@ -38,8 +38,8 @@ def users():
         "key": "anonymous"
     }
     # dbinfo = ldclient.get().variation('dbDetails', user, fallback)
-    conn = psycopg2.connect(f"host={fallback['dbhost']} port=5432 \
-            dbname={fallback['dbname']} user=postgres password=postgres_password \
+    conn = psycopg2.connect(f"host=db port=5432 \
+            dbname=localdb user=postgres password=postgres_password \
             sslmode=disable")
     if request.method == "GET":
         cur = conn.cursor(cursor_factory=RealDictCursor)
