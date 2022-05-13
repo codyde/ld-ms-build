@@ -51,6 +51,11 @@ export default function Home() {
         }}
       />
       <main className="h-screen grid grid-cols-4 grid-rows-3">
+      {qrCode ? (
+          <div className="grid col-span-4 row-start-3 my-8 lg:row-start-1 lg:col-span-1 lg:col-start-1 justify-center items-center px-8">
+            <QRCode />
+          </div>
+        ) : null}
         {brandImage ? (
           <div className="grid col-span-4 row-start-3 lg:row-start-2 lg:col-span-1 lg:col-start-1 justify-center items-center px-8">
             <img
