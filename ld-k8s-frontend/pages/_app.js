@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default withLDProvider({
-  clientSideID: '627ddb562cae6c1576648ac8',
+  clientSideID: '627ddb62ddbf5a0cba3cb0dc',
   user: {
     key: id,
     custom: {
