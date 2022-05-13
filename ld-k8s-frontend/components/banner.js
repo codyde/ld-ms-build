@@ -17,7 +17,10 @@ export default function Banner() {
         <div className="mx-auto py-4 text-2xl md:text-4xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-ldyellow to-lddblue text-center italic">
           Build and Release Faster!
         </div>
-        : null}
+        : 
+        <div className="mx-auto py-4 text-2xl md:text-4xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-ldyellow to-lddblue text-center italic">
+          Welcome to Kubecon Europe!
+        </div>}
       </div>
     </div>
   );
