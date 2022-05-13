@@ -15,7 +15,7 @@ CORS(app)
 
 LD_KEY = "sdk-ac855fd1-dfa9-4450-b9eb-a60a9c078945"
 
-fallback = '{"dbinfo":"localhost","dbname":"localdb"}'
+fallback = '{"dbinfo":"db","dbname":"localdb"}'
 
 user = {
     "key": "anonymous"
@@ -37,9 +37,9 @@ def users():
     user = {
         "key": "anonymous"
     }
-    dbinfo = ldclient.get().variation('dbDetails', user, fallback)
-    conn = psycopg2.connect(f"host={dbinfo['dbhost']} port=5432 \
-            dbname={dbinfo['dbname']} user=postgres password=postgres_password \
+    # dbinfo = ldclient.get().variation('dbDetails', user, fallback)
+    conn = psycopg2.connect(f"host={fallback['dbhost']} port=5432 \
+            dbname={fallback['dbname']} user=postgres password=postgres_password \
             sslmode=disable")
     if request.method == "GET":
         cur = conn.cursor(cursor_factory=RealDictCursor)
